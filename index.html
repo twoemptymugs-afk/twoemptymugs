@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Two Empty Mugs Games</title>
-  <meta name="description" content="Two Empty Mugs Games — indie games for kids and families. Home of Dig Blitz, coming soon to Android.">
+  <title>Dig Blitz — Two Empty Mugs Games</title>
+  <meta name="description" content="Dig Blitz — tap, dig and blast through 10 underground biomes. Collect relics, upgrade your tools, and see how deep you can go. Free on Android.">
+  <meta property="og:title" content="Dig Blitz">
+  <meta property="og:description" content="Dig, Collect, Mine. Free on Android.">
+  <meta property="og:image" content="assets/feature.png">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: #0f0f1a;
+      background: #0d0b1a;
       color: #ffffff;
       min-height: 100vh;
     }
@@ -21,14 +24,14 @@
       justify-content: space-between;
       align-items: center;
       padding: 20px 40px;
-      background: rgba(15, 15, 26, 0.95);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      background: rgba(13, 11, 26, 0.97);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    nav img {
-      height: 52px;
-      width: auto;
-    }
+    nav img { height: 48px; width: auto; }
 
     nav a {
       color: #aab4d4;
@@ -41,77 +44,150 @@
     }
 
     nav a:hover { color: #ffffff; }
-
     nav a svg { width: 20px; height: 20px; fill: currentColor; }
 
     /* HERO */
     .hero {
       text-align: center;
-      padding: 70px 20px 50px;
+      padding: 64px 20px 56px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(120, 60, 220, 0.18) 0%, transparent 70%);
     }
 
     .hero img.feature {
       width: 100%;
-      max-width: 640px;
-      border-radius: 16px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.6);
-      margin-bottom: 36px;
+      max-width: 680px;
+      border-radius: 18px;
+      box-shadow: 0 24px 80px rgba(0,0,0,0.7);
+      margin-bottom: 40px;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: linear-gradient(135deg, #16a34a, #22c55e);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 100px;
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    .live-badge::before {
+      content: '';
+      width: 7px;
+      height: 7px;
+      background: #ffffff;
+      border-radius: 50%;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(0.7); }
     }
 
     .hero h1 {
-      font-size: clamp(2rem, 6vw, 3.2rem);
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 14px;
+      font-size: clamp(2.4rem, 7vw, 3.8rem);
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 40%, #c4b5fd);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .hero p {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: #aab4d4;
-      max-width: 480px;
-      margin: 0 auto 32px;
-      line-height: 1.6;
-    }
-
-    .badge {
-      display: inline-block;
-      background: linear-gradient(135deg, #f97316, #facc15);
-      color: #1a0a00;
-      font-weight: 700;
-      font-size: 13px;
-      padding: 6px 16px;
-      border-radius: 100px;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-bottom: 32px;
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      color: #9ca3c4;
+      max-width: 460px;
+      margin: 0 auto 36px;
+      line-height: 1.65;
     }
 
     .btn-store {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      background: #1a1a2e;
-      border: 2px solid rgba(255,255,255,0.15);
+      gap: 12px;
+      background: linear-gradient(135deg, #7c3aed, #4f46e5);
       color: #ffffff;
       text-decoration: none;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 600;
-      transition: border-color 0.2s, background 0.2s;
-      cursor: default;
-      opacity: 0.6;
+      padding: 16px 32px;
+      border-radius: 14px;
+      font-size: 16px;
+      font-weight: 700;
+      transition: transform 0.15s, box-shadow 0.15s;
+      box-shadow: 0 8px 32px rgba(124, 58, 237, 0.45);
     }
 
+    .btn-store:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(124, 58, 237, 0.6);
+    }
+
+    .btn-store:active { transform: translateY(0); }
     .btn-store svg { width: 22px; height: 22px; fill: currentColor; }
+
+    /* FEATURES */
+    .features {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 24px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .features h2 {
+      text-align: center;
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 40px;
+      color: #e2e8f0;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+      padding: 28px 24px;
+      text-align: center;
+    }
+
+    .feature-card .icon {
+      font-size: 2.4rem;
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #e2e8f0;
+    }
+
+    .feature-card p {
+      font-size: 0.9rem;
+      color: #7a85a8;
+      line-height: 1.5;
+    }
 
     /* ABOUT */
     .about {
-      max-width: 600px;
+      max-width: 580px;
       margin: 0 auto;
-      padding: 60px 24px;
+      padding: 56px 24px;
       text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      border-top: 1px solid rgba(255,255,255,0.07);
     }
 
     .about h2 {
@@ -122,33 +198,34 @@
     }
 
     .about p {
-      color: #aab4d4;
+      color: #7a85a8;
       line-height: 1.7;
-      font-size: 1rem;
+      font-size: 0.98rem;
     }
 
     /* FOOTER */
     footer {
       text-align: center;
-      padding: 30px 20px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      color: #4a5568;
+      padding: 32px 20px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      color: #3a4258;
       font-size: 13px;
     }
 
-    footer a { color: #4a5568; text-decoration: none; }
+    footer a { color: #3a4258; text-decoration: none; }
     footer a:hover { color: #aab4d4; }
 
     @media (max-width: 480px) {
       nav { padding: 16px 20px; }
-      nav img { height: 40px; }
+      nav img { height: 38px; }
+      .feature-grid { grid-template-columns: 1fr 1fr; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <img src="logo.png" alt="Two Empty Mugs Games">
+    <img src="assets/logo.png" alt="Two Empty Mugs Games">
     <a href="https://x.com/TwoEmptyMugs" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L2.018 2.25H8.08l4.253 5.622L18.244 2.25zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z"/>
@@ -158,25 +235,51 @@
   </nav>
 
   <section class="hero">
-    <img class="feature" src="feature.jpg" alt="Dig Blitz — Dig, Collect and Mine!">
-    <div class="badge">Coming Soon to Android</div>
+    <img class="feature" src="assets/feature.png" alt="Dig Blitz — Dig, Collect, Mine!">
+    <div class="live-badge">Now Live on Android</div>
     <h1>Dig Blitz</h1>
     <p>Tap, dig, and blast your way through 10 underground biomes. Collect relics, upgrade your tools, and see how deep you can go.</p>
-    <a class="btn-store" href="#">
+    <a class="btn-store" href="https://play.google.com/store/apps/details?id=com.twoemptymugs.digblitz" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M3.18 23.76c.3.17.64.24.99.2l12.64-11.25L13.36 9.3 3.18 23.76zM20.47 10.37l-2.6-1.5-3.26 2.9 3.26 2.9 2.62-1.51c.75-.43.75-1.36-.02-1.79zM2.1.49C1.83.84 1.67 1.32 1.67 1.93v20.14c0 .61.16 1.09.43 1.43L2.2 23.6l11.25-10.01v-.24L2.2.39 2.1.49zm11.26 11.89L2.1 1.12c.3-.04.64.03.99.2l12.64 11.25-2.37 2.11-2-2.3z"/>
       </svg>
-      Google Play — Coming Soon
+      Download Free on Google Play
     </a>
+  </section>
+
+  <section class="features">
+    <h2>What's in the ground?</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="icon">⛏️</span>
+        <h3>10 Biomes</h3>
+        <p>From sandy shallows to the galaxy deep — each biome looks and plays differently.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">🏆</span>
+        <h3>30 Tools</h3>
+        <p>Start with a rusty spoon. Work your way up to the Infinity Blaster.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">🪨</span>
+        <h3>Relics to Collect</h3>
+        <p>Crack collectable blocks to discover rare and legendary relics.</p>
+      </div>
+      <div class="feature-card">
+        <span class="icon">⚡</span>
+        <h3>Dig Blitz Mode</h3>
+        <p>Charge up and unleash a super dig that tears through the ground.</p>
+      </div>
+    </div>
   </section>
 
   <section class="about">
     <h2>About Two Empty Mugs</h2>
-    <p>We're a small indie studio making fun, accessible games for kids and families. Built with too much coffee and not enough sleep — somewhere in the UK.</p>
+    <p>We're a small indie studio making fun, accessible games for kids and families. Built with too much coffee and not enough sleep — somewhere in Wales.</p>
   </section>
 
   <footer>
-    <p>&copy; 2026 Two Empty Mugs Games &middot; <a href="mailto:twoemptymugs@gmail.com">twoemptymugs@gmail.com</a></p>
+    <p>&copy; 2026 Two Empty Mugs Games &middot; <a href="mailto:twoemptymugs@gmail.com">twoemptymugs@gmail.com</a> &middot; <a href="/privacy-policy">Privacy Policy</a></p>
   </footer>
 
 </body>
